@@ -6,5 +6,7 @@ export default {
   'form.password_tips': 'パスワードを入力してください!',
   'form.phone': '電話番号',
   'form.phone_empty_tips': '電話番号を入力してください',
-  'form.phone_error_tips': '電話番号No Right',
+  'form.phone_error_tips': '電話番号が正しくありません',
+  'form.area': '地域',
+  'form.area_tips': '地域を入力してください',
 };

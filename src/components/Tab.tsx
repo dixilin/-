@@ -22,13 +22,10 @@ const Tab: React.FC<Iprops> = ({
   setCurrTab,
   currTab
 }) => {
-  const locale = getLocale();
 
   const onChange = (key: string) => {
     setCurrTab(key);
   };
-
-  const [activeKey, setActiveKey] = useState('zh-CN');
 
   return (
     <div className={hidden ? 'hidden' : ''}>

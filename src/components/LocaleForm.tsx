@@ -1,4 +1,4 @@
-import { Checkbox, Form, Input } from 'antd';
+import { Checkbox, Form, Input, Select } from 'antd';
 import useLang from '../hooks/useLang';
 
 interface Iprops {
@@ -25,15 +25,21 @@ const MyForm: React.FC<Iprops> = ({
     });
   };
 
+  const areas = [
+    { label: '北京', value: 'beijing' },
+    { label: '上海', value: 'shanghai' },
+  ];
+
   return (
     <>
       <Form.Item
         label={langPkg['form.username']}
         name={`${formName}_username`}
         rules={[{ required: true, message: langPkg['form.username_tips'] }]}
+        // validateTrigger="onBlur"
       >
         <Input
-          onChange={() => {
+          onBlur={() => {
             formValidate!();
           }}
         />
@@ -42,10 +48,11 @@ const MyForm: React.FC<Iprops> = ({
         label={langPkg['form.password']}
         name={`${formName}_password`}
         rules={[{ required: true, message: langPkg['form.password_tips'] }]}
+        // validateTrigger="onBlur"
       >
         <Input.Password
           disabled={!local}
-          onChange={(e) => {
+          onBlur={(e) => {
             getPasswordKeys().forEach((el) => {
               form.setFieldsValue({
                 [el]: e.target.value,
@@ -58,6 +65,7 @@ const MyForm: React.FC<Iprops> = ({
       <Form.Item
         label={langPkg['form.phone']}
         name={`${formName}_phone`}
+        // validateTrigger="onBlur"
         rules={[
           { required: true, message: langPkg['form.phone_empty_tips'] },
           () => ({
@@ -71,10 +79,17 @@ const MyForm: React.FC<Iprops> = ({
         ]}
       >
         <Input
-          onChange={() => {
+          onBlur={() => {
             formValidate!();
           }}
         />
+      </Form.Item>
+      <Form.Item
+        label={langPkg['form.area']}
+        name={`${formName}_area`}
+        rules={[{ required: true, message: langPkg['form.area_tips'] }]}
+      >
+        <Select options={areas} onChange={() => formValidate!()} />
       </Form.Item>
       <Form.Item
         name={`${formName}_remember`}
